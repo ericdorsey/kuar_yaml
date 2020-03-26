@@ -46,3 +46,20 @@ Used against:
 
 Errata:  
 https://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=0636920223788  
+
+---
+
+#### Pg. 161-162 Regex issue
+The example Regex given isn't even valid, it's like someone forgot to close opening `[` with `]` and it slipped past editors?..:
+
+`^[.[?[a-azAz0-9[([.[?[a-zA-Z0-9[+[-_a-zA-Z0-9[?)*$`
+
+But even when you fix the `[`s that should be `]`s it still doesn't match the example valid key names on p. 162:
+ 
+`^[.]?[a-zAZ0-9]([.]?[a-zA-Z0-9]+[-_a-zA-Z0-9]?)*$`
+
+Here is a seemingly better working Regex:  
+
+`^[^_]\.?(\w+|\d+)[-._](\w+|\d+)?$`
+
+https://regex101.com/r/108DPe/4 
