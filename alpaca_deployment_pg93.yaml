@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpaca
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: alpaca
+  template:
+    metadata:
+      labels:
+        app: alpaca
+    spec:
+      containers:
+      - image: gcr.io/kuar-demo/kuard-amd64:green
+        name: alpaca
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
